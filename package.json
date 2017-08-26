@@ -28,6 +28,7 @@
     "mocha": "mocha test/ --recursive"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "body-parser": "^1.17.2",
     "compression": "^1.7.0",
     "cors": "^2.8.4",
@@ -46,6 +47,7 @@
     "helmet": "^3.8.1",
     "nedb": "^1.8.0",
     "serve-favicon": "^2.4.3",
+    "uuid": "^3.1.0",
     "winston": "^2.3.1"
   },
   "devDependencies": {
