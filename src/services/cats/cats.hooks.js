@@ -6,7 +6,13 @@ module.exports = {
   before: {
     // all: [ authenticate('jwt') ],
     all: [],
-    find: [],
+    find: [
+      function (hook) {
+        if (hook.params.query.since) {
+          hook.params.query = { uploadedTryAt: { gte: hook.params.query.since } };
+        }
+      }
+    ],
     get: [],
     create: [],
     update: [],
@@ -18,7 +24,7 @@ module.exports = {
     all: [],
     find: [
       function (hook) {
-        if (!hook.result || hook.result.length === 0) {
+        if (hook.result.total <= hook.result.skip && !hook.params.query.uploadedTryAt) {
           let promises = [];
 
           for (let i = 0; i < 5; i++) {
